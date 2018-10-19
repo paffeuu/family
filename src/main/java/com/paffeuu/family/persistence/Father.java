@@ -1,5 +1,7 @@
 package com.paffeuu.family.persistence;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -22,6 +24,11 @@ public class Father {
 
     @Column(name="SecondName")
     private String secondName;
+
+    @JoinColumn(name="FamilyId")
+    @JsonBackReference
+    @OneToOne(mappedBy = "father")
+    private Family family;
 
     public int getId() {
         return id;
@@ -61,5 +68,14 @@ public class Father {
 
     public void setSecondName(String secondName) {
         this.secondName = secondName;
+    }
+
+
+    public Family getFamily() {
+        return family;
+    }
+
+    public void setFamily(Family family) {
+        this.family = family;
     }
 }
