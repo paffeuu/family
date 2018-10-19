@@ -1,6 +1,9 @@
 package com.paffeuu.family.persistence;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "families")
@@ -11,12 +14,14 @@ public class Family {
     private int id;
 
     @OneToOne
+    @JsonManagedReference
     @JoinColumn(name = "FatherId")
     private Father father;
 
-    @ManyToOne
-    @JoinColumn(name ="ChildId")
-    private Child child;
+    @OneToMany(mappedBy = "family")
+    @JsonManagedReference
+    @Column(name ="Children")
+    private List<Child> children;
 
     public int getId() {
         return id;
@@ -34,11 +39,15 @@ public class Family {
         this.father = father;
     }
 
-    public Child getChild() {
-        return child;
+    public List<Child> getChildren() {
+        return children;
     }
 
-    public void setChild(Child child) {
-        this.child = child;
+    public void setChildren(List<Child> children) {
+        this.children = children;
+    }
+
+    public void addChild(Child child) {
+        children.add(child);
     }
 }
