@@ -19,3 +19,7 @@ ul li {
   text-decoration: none;
   color: inherit;
 }
+
+.menu-item:hover {
+  background-color: #303030;
+}

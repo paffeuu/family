@@ -1,9 +1,9 @@
-.welcome {
+.header {
   text-align: center;
-  font-size: 30px;
+  font-size: 50px;
 }
 
-.welcome-text {
+.normal-text {
   text-align: justify;
   font-size: 18px;
 }

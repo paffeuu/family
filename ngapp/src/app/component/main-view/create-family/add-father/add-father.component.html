@@ -1,0 +1,31 @@
+<p class="header">Add father</p>
+<div class="input-container">
+  <div class="normal-text">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">First name</span>
+      </div>
+      <input type="text" title="firstName" class="form-control" aria-label="FirstName" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon2">Second name</span>
+      </div>
+      <input type="text" title="secondName" class="form-control" aria-label="SecondName" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">PESEL number</span>
+      </div>
+      <input type="text" title="peselNr" class="form-control" aria-label="PESEL" aria-describedby="basic-addon1" id="pesel-input">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon4">Date of birth</span>
+      </div>
+      <input type="text" title="birthDate" name="date" [value]="date" class="form-control" id="disabledInput"
+             aria-label="DateOfBirth" aria-describedby="basic-addon1" tabindex="-1">
+    </div>
+  </div>
+    <button type="button" [routerLink]="'add-child'" class="btn btn-success">Add father</button>
+</div>
