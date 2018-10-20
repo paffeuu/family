@@ -1,0 +1,47 @@
+<p class="header">Add child</p>
+<div class="input-container">
+  <div class="normal-text">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">First name</span>
+      </div>
+      <input type="text" title="firstName" class="form-control" aria-label="FirstName" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon2">Second name</span>
+      </div>
+      <input type="text" title="secondName" class="form-control" aria-label="SecondName" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">PESEL number</span>
+      </div>
+      <input type="text" title="peselNr" class="form-control" aria-label="PESEL" aria-describedby="basic-addon1" id="pesel-input">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon4">Date of birth</span>
+      </div>
+      <input type="text" title="birthDate" name="date" [value]="date" class="form-control" aria-label="DateOfBirth" aria-describedby="basic-addon1">
+    </div>
+  </div>
+  <div class="form-container">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+      <label class="form-check-label" for="exampleRadios1">
+        Male
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+      <label class="form-check-label" for="exampleRadios2">
+        Female
+      </label>
+    </div>
+  </div>
+  <div class="btn-group">
+    <button type="button" [routerLink]="['/create-family/family-created']" class="btn btn-danger md-1">Create family</button>
+    <button type="button" [routerLink]="'add-child'" class="btn btn-success md-1">Add next child</button>
+  </div>
+</div>

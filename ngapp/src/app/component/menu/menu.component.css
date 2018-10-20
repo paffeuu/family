@@ -1,0 +1,25 @@
+ul {
+  margin: 0;
+  padding: 10% 0 0;
+}
+
+ul li {
+  margin: 20% 0 20% 0;
+  list-style: none;
+}
+
+.menu-item {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  margin: 5% 0 5% 0;
+  background: #353535;
+  font-size: 22px;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.menu-item:hover {
+  background-color: #303030;
+}

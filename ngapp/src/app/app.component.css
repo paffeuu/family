@@ -1,0 +1,20 @@
+.menu-container {
+  margin: 20px 0 20px 0;
+  padding: 0;
+  background-color: #3e3e3e;
+  color: #289446;
+  width: 100%;
+  height: 95vh;
+  display: block;
+}
+
+.router-container {
+  margin: 20px 0 20px 0;
+  background-color: #545454;
+  border: 2px solid #249141;
+  color: #cce4be;
+  width: 100%;
+  height: 95vh;
+  display: block;
+  padding: 7vh 7.5vw 7vh 7.5vw;
+}
