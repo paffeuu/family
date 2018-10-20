@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FamilyService} from "../../../../shared/service/family.service";
 
 @Component({
   selector: 'app-show-created-family',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowCreatedFamilyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private familyService: FamilyService) { }
 
   ngOnInit() {
+    console.log(this.familyService.family);
   }
 
 }

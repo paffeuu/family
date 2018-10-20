@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {FamilyService} from "../../shared/service/family.service";
 
 @Component({
   selector: 'app-menu',
@@ -7,8 +8,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private familyService: FamilyService) { }
 
   ngOnInit() {}
+
+  createFamily(): void {
+    this.familyService.createFamily();
+  }
 
 }

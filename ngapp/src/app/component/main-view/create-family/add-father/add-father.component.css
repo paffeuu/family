@@ -16,7 +16,7 @@
 
 #disabledInput {
   pointer-events: none;
-  background-color: #d7d7d7;
+  background-color: #d3d3d3;
 }
 
 button {
@@ -25,4 +25,7 @@ button {
   margin-top: 5%;
 }
 
+#failed {
+  display: none;
+}
 
