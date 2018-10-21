@@ -60,6 +60,10 @@ button {
   display: none;
 }
 
+#server-error {
+  display: none;
+}
+
 .counter {
   font-size: 60px;
   color: #9ba000;

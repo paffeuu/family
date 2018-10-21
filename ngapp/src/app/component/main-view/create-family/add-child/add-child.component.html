@@ -1,9 +1,13 @@
-<div class="alert alert-success" id="created" role="alert">
+<div class="alert alert-primary" id="created" role="alert">
   Child was successfully added to family. Add the next one or just create the family!
 </div>
 
 <div class="alert alert-secondary" id="failed" role="alert">
   Your input was wrong. Propably your PESEL number does not match requirements.
+</div>
+
+<div class="alert alert-danger" id="server-error" role="alert">
+  Family creation failed. Internal server error!
 </div>
 
 <p class="header">Add child <span class="counter">({{counter}})</span></p>
@@ -52,7 +56,7 @@
     </div>
   </div>
   <div class="btn-group">
-    <button type="button" [routerLink]="['/create-family/family-created']" class="btn btn-danger md-1">Skip and create family</button>
+    <button type="button" (click)="createFamily()" class="btn btn-danger md-1">Skip and create family</button>
     <button type="button" (click)="addChild()" class="btn btn-success md-1">Add next child</button>
   </div>
 </div>

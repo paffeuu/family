@@ -13,7 +13,7 @@ export class MenuComponent implements OnInit {
   ngOnInit() {}
 
   createFamily(): void {
-    this.familyService.createFamily();
+    this.familyService.initializeFamily();
   }
 
 }

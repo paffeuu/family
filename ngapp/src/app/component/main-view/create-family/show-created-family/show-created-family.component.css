@@ -1,1 +1,5 @@
 @import "../../main-view.css";
+
+#success {
+  display: none;
+}

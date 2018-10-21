@@ -2,16 +2,21 @@ import { Injectable } from '@angular/core';
 import {Family} from "../model/family";
 import {Father} from "../model/father";
 import {Child} from "../model/child";
+import {RestService} from "./rest.service";
+import {Observable, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FamilyService {
   family: Family;
+  familySubject: Subject<Family>;
 
-  constructor() {}
+  constructor(private restService: RestService) {
+    this.familySubject = new Subject<Family>();
+  }
 
-  createFamily(): void {
+  initializeFamily(): void {
     this.family = new Family();
   }
 
@@ -42,6 +47,20 @@ export class FamilyService {
     FamilyService.toUpperCase(secondName);
     this.family.children.push(new Child(firstName, secondName, pesel, birthDate, sex));
     return true;
+  }
+
+  createFamily(): boolean {
+    let family = this.restService.createFamily(this.family);
+    this.nextFamily(family);
+    return family != null;
+  }
+
+  nextFamily(family: Family): void {
+    this.familySubject.next(family);
+  }
+
+  getFamilyAsObservable(): Observable<Family> {
+    return this.familySubject.asObservable();
   }
 
   static toUpperCase(word: string) {

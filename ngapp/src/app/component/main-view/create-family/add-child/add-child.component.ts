@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {PeselToBirthDateService} from "../../../../shared/service/pesel-to-birth-date.service";
 import {FamilyService} from "../../../../shared/service/family.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-child',
@@ -16,10 +17,11 @@ export class AddChildComponent implements OnInit, AfterViewInit {
   birthDate: Date;
   sex: string;
 
-  counter: Number;
+  counter: number;
 
   constructor(private peselToBirthDateService: PeselToBirthDateService,
-              private familyService: FamilyService) { }
+              private familyService: FamilyService,
+              private router: Router) { }
 
   ngOnInit() {
     this.counter = 1;
@@ -42,6 +44,17 @@ export class AddChildComponent implements OnInit, AfterViewInit {
       let failedAlert = document.getElementById("failed");
       failedAlert.setAttribute("style", "display: block;");
       setInterval(() => failedAlert.setAttribute("style", "display:none;"), 5000);
+    }
+  }
+
+  createFamily(): void {
+    if(this.familyService.createFamily()) {
+      this.router.navigate(['/create-family/family-created']);
+    }
+    else {
+      let serverErrorAlert = document.getElementById("server-error");
+      serverErrorAlert.setAttribute("style", "display: block;");
+      setInterval(() => serverErrorAlert.setAttribute("style", "display:none;"), 5000);
     }
   }
 
