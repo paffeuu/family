@@ -27,8 +27,11 @@ export class ShowCreatedFamilyComponent implements OnInit, AfterViewInit{
     let successAlert = document.getElementById("success");
     successAlert.setAttribute("style", "display: block;");
     setInterval(() => successAlert.setAttribute("style", "display:none;"), 5000);
-    this.familyService.getFamilyAsObservable().subscribe(family =>
-      setTimeout(() => this.loadFamilyToTable(family), 100));
+    this.familyService.getFamilyAsObservable().subscribe(family => {
+        if (family) {
+        setTimeout(() => this.loadFamilyToTable(family), 100);
+      }
+    });
   }
 
   loadFamilyToTable(family: Family):void {

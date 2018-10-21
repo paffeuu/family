@@ -14,6 +14,9 @@ export class FamilyService {
 
   constructor(private restService: RestService) {
     this.familySubject = new Subject<Family>();
+    this.restService.getFamilyAsObservable().subscribe(
+      family => this.familySubject.next(family)
+    )
   }
 
   initializeFamily(): void {
@@ -49,10 +52,8 @@ export class FamilyService {
     return true;
   }
 
-  createFamily(): boolean {
-    let family = this.restService.createFamily(this.family);
-    this.nextFamily(family);
-    return family != null;
+  createFamily(): void {
+      this.restService.createFamily(this.family);
   }
 
   nextFamily(family: Family): void {
