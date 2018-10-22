@@ -1,0 +1,14 @@
+@import "../../main-view.css";
+@import "../../create-family/add-child/add-child.component.css";
+
+button {
+  padding: 1%;
+  margin-left: 22vw;
+  margin-top: 3vh;
+
+}
+
+#child {
+  color: #988b58;
+}
+

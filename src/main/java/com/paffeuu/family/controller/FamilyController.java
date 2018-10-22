@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -41,11 +42,23 @@ public class FamilyController {
     }
 
     @GetMapping(path = "/search-child")
-    public ResponseEntity<Set<Father>> searchChild(@RequestBody Child child) {
+    public ResponseEntity<Set<Family>> searchChild(
+            @RequestParam(value = "firstName", required = false) String firstName,
+            @RequestParam(value = "secondName", required = false) String secondName,
+            @RequestParam(value = "pesel", required = false) String pesel,
+            @RequestParam(value = "birthDate", required = false) String birthDateParam,
+            @RequestParam(value = "sex", required = false) String sex) {
+        Date birthDate;
+        if (birthDateParam == null) {
+            birthDate = null;
+        } else {
+            birthDate = Date.valueOf(birthDateParam);
+        }
+        Child child = new Child(firstName, secondName, pesel, birthDate, sex);
         Set<Child> children = persistenceService.findChildren(child);
-        Set<Father> fathers = new HashSet<>();
-        children.forEach(child1 -> fathers.add(persistenceService.getFatherByFamily(child1.getFamily())));
-        return ResponseEntity.ok(fathers);
+        Set<Family> families = new HashSet<>();
+        children.forEach(child1 -> families.add(child1.getFamily()));
+        return ResponseEntity.ok(families);
     }
 
     @GetMapping(path = "/read-family/{familyId}")

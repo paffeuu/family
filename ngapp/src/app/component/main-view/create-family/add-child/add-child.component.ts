@@ -39,12 +39,12 @@ export class AddChildComponent implements OnInit, AfterViewInit {
     if (this.familyService.addChild(this.firstName, this.secondName, this.pesel, this.birthDate, this.sex)) {
       let createdAlert = document.getElementById("created");
       createdAlert.setAttribute("style", "display: block;");
-      setInterval(() => createdAlert.setAttribute("style", "display:none;"), 5000);
+      setTimeout(() => createdAlert.setAttribute("style", "display:none;"), 5000);
       this.refreshComponent();
     } else {
       let failedAlert = document.getElementById("failed");
       failedAlert.setAttribute("style", "display: block;");
-      setInterval(() => failedAlert.setAttribute("style", "display:none;"), 5000);
+      setTimeout(() => failedAlert.setAttribute("style", "display:none;"), 5000);
     }
   }
 

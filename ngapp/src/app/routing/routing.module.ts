@@ -6,6 +6,9 @@ import {AddChildComponent} from "../component/main-view/create-family/add-child/
 import {CreateFamilyComponent} from "../component/main-view/create-family/create-family.component";
 import {AddFatherComponent} from "../component/main-view/create-family/add-father/add-father.component";
 import {ShowCreatedFamilyComponent} from "../component/main-view/create-family/show-created-family/show-created-family.component";
+import {SearchFamilyComponent} from "../component/main-view/search-family/search-family.component";
+import {SearchByChildComponent} from "../component/main-view/search-family/search-by-child/search-by-child.component";
+import {ChooseFamilyComponent} from "../component/main-view/search-family/choose-family/choose-family.component";
 
 const routes = [
   {path: '', component: WelcomeComponent},
@@ -14,6 +17,11 @@ const routes = [
       {path: 'add-child', component: AddChildComponent},
       {path: 'family-created', component: ShowCreatedFamilyComponent}
     ]},
+  {path: 'search-family', component: SearchFamilyComponent, children: [
+      {path: '', component: SearchByChildComponent},
+      {path: 'show-family', component: ChooseFamilyComponent},
+    ]},
+  {path: '**', component: WelcomeComponent}
 ];
 
 @NgModule({

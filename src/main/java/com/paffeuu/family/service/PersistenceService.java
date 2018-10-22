@@ -66,10 +66,6 @@ public class PersistenceService {
         return fatherRepository.getFatherById(id);
     }
 
-    public Father getFatherByFamily(Family family) {
-        return fatherRepository.getFatherByFamily(family);
-    }
-
     public Child getChildById(int id) {
         return childRepository.getById(id);
     }

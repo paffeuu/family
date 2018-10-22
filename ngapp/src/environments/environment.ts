@@ -9,5 +9,6 @@ export const environment = {
   createFamilyEndpoint: "create-family/",
   addFatherEndpoint: "add-father/",
   addChildEndpoint: "add-child/",
-  readFamilyEndpoint: "read-family/"
+  readFamilyEndpoint: "read-family/",
+  searchChildEndpoint: "search-child"
 };
