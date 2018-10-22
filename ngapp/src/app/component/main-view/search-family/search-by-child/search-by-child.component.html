@@ -1,0 +1,52 @@
+<div class="alert alert-secondary" id="failed" role="alert">
+  Your input was wrong. Propably your PESEL number does not match requirements.
+</div>
+
+
+<p class="header">Search for family by <strong><span id="child">child</span></strong></p>
+<div class="input-container">
+  <div class="normal-text">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">First name</span>
+      </div>
+      <input type="text" name="firstName" [(ngModel)]="firstName" title="firstName" class="form-control"
+             aria-label="FirstName" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon2">Second name</span>
+      </div>
+      <input type="text" name="secondName" [(ngModel)]="secondName" title="secondName" class="form-control"
+             aria-label="SecondName" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">PESEL number</span>
+      </div>
+      <input type="text" title="pesel" name="pesel" [(ngModel)]="pesel" class="form-control"
+             aria-label="PESEL" aria-describedby="basic-addon1" id="pesel-input">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon4">Date of birth</span>
+      </div>
+      <input type="date" title="birthDate" name="date" [(ngModel)]="birthDate" class="form-control"
+             aria-label="DateOfBirth" aria-describedby="basic-addon1">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="radio-label">Sex</label>
+    <div class="form-control form-radio-control">
+      <label class="radio-inline">
+        <input type="radio" name="gender" value="male" [(ngModel)]="sex">
+        Male
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="gender" value="female" [(ngModel)]="sex">
+        Female
+      </label>
+    </div>
+  </div>
+    <button type="button" (click)="searchForFamily()" class="btn btn-success md-1">Search</button>
+</div>

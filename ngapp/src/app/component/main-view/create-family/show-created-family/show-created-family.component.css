@@ -1,0 +1,10 @@
+@import "../../main-view.css";
+
+#success {
+  display: none;
+}
+
+
+#server-error {
+  display: none;
+}

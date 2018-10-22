@@ -1,0 +1,66 @@
+@import "../../main-view.css";
+
+.input-group {
+  margin-top: 3.2%;
+  margin-left: 30%;
+  width: 40%;
+}
+
+.input-group-prepend {
+  width: 40%;
+}
+
+.input-group-text {
+  width: 100%;
+}
+
+.btn-group {
+  margin-left: 12.5vw;
+  margin-top: 3%;
+}
+
+button {
+  width: 14vw;
+  margin: 0 4vw 0 4vw;
+  padding: 2%;
+}
+
+.form-container {
+  margin-top: 3%;
+  margin-left: 35%;
+}
+
+.radio-label {
+  margin-left: 25%;
+}
+
+.form-radio-control {
+  width: 50%;
+  margin-left:25%;
+}
+
+.form-label {
+  font-size: 20px;
+}
+
+.radio-inline {
+  margin: 1% 2%;
+}
+
+#disabledInput {
+  pointer-events: none;
+  background-color: #d3d3d3;
+}
+
+#failed {
+  display: none;
+}
+
+#created {
+  display: none;
+}
+
+.counter {
+  font-size: 60px;
+  color: #9ba000;
+}
