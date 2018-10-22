@@ -8,5 +8,6 @@ export const environment = {
   url: "http://localhost:8080/family/",
   createFamilyEndpoint: "create-family/",
   addFatherEndpoint: "add-father/",
-  addChildEndpoint: "add-child/"
+  addChildEndpoint: "add-child/",
+  readFamilyEndpoint: "read-family/"
 };

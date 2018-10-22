@@ -3,3 +3,8 @@
 #success {
   display: none;
 }
+
+
+#server-error {
+  display: none;
+}

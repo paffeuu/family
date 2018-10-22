@@ -52,8 +52,7 @@ export class RestService {
       (childId) => {
         if (childId != -1) {
           if (++this.childCounter == this.family.children.length) {
-            this.familySubject.next(this.family);
-            this.cleanupData();
+            this.readFamily();
           }
         } else {
           this.familySubject.next(null);
@@ -63,7 +62,9 @@ export class RestService {
   }
 
   cleanupData(): void {
-
+    this.childCounter = 0;
+    this.family = null;
+    this.familyId = -1;
   }
 
   createFamily(family: Family): void {
@@ -89,6 +90,17 @@ export class RestService {
       )
     }
   }
+
+  readFamily() {
+    this.http.get(environment.url + environment.readFamilyEndpoint + this.familyId).subscribe(
+      (family) => {
+        console.log(family);
+        this.familySubject.next(family);
+      }, () => this.familySubject.next(null)
+    )
+    this.cleanupData();
+  }
+
   getFamilyAsObservable(): Observable<any> {
     return this.familySubject.asObservable();
   }

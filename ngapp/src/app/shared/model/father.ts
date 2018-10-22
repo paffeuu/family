@@ -2,9 +2,9 @@ export class Father {
   firstName: string;
   secondName: string;
   pesel: string;
-  birthDate: Date;
+  birthDate: any;
 
-  constructor(firstName: string, secondName: string, pesel: string, birthDate: Date) {
+  constructor(firstName: string, secondName: string, pesel: string, birthDate: any) {
     this.firstName = firstName;
     this.secondName = secondName;
     this.pesel = pesel;

@@ -27,17 +27,7 @@ export class AddChildComponent implements OnInit, AfterViewInit {
     this.counter = 1;
     this.date = "";
     this.sex = "";
-    this.familyService.getFamilyAsObservable().subscribe(
-      family => {
-        if (family) {
-          this.router.navigate(['/create-family/family-created']);
-        } else {
-          let serverErrorAlert = document.getElementById("server-error");
-          serverErrorAlert.setAttribute("style", "display: block;");
-          setInterval(() => serverErrorAlert.setAttribute("style", "display:none;"), 5000);
-        }
-      }
-    )
+
   }
 
   ngAfterViewInit() {
@@ -60,6 +50,7 @@ export class AddChildComponent implements OnInit, AfterViewInit {
 
   createFamily(): void {
     this.familyService.createFamily();
+    this.router.navigate(['/create-family/family-created']);
   }
 
   generateDate(): void {

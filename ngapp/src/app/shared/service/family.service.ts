@@ -12,10 +12,21 @@ export class FamilyService {
   family: Family;
   familySubject: Subject<Family>;
 
+  familyEx1 = new Family();
+  familyEx2 = new Family();
+
   constructor(private restService: RestService) {
+    this.familyEx1.father = new Father("Janusz", "Kowalski", "2342234", new Date());
+    this.familyEx1.children = [new Child("Maria", "Kula", "32242", new Date(), "female")];
+    this.familyEx2.father = new Father("Mariusz", "Nowak", "2342234", new Date());
+    this.familyEx2.children = [new Child("Janina", "Aaaron", "32242", new Date(), "female")];
+
     this.familySubject = new Subject<Family>();
     this.restService.getFamilyAsObservable().subscribe(
-      family => this.familySubject.next(family)
+      family => {
+        this.familySubject.next(family);
+        console.log(this);
+      }
     )
   }
 
@@ -53,11 +64,7 @@ export class FamilyService {
   }
 
   createFamily(): void {
-      this.restService.createFamily(this.family);
-  }
-
-  nextFamily(family: Family): void {
-    this.familySubject.next(family);
+    this.restService.createFamily(this.family);
   }
 
   getFamilyAsObservable(): Observable<Family> {

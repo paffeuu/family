@@ -3,35 +3,35 @@ import {FamilyService} from "../../../../shared/service/family.service";
 import {Family} from "../../../../shared/model/family";
 import {Father} from "../../../../shared/model/father";
 import {Child} from "../../../../shared/model/child";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-show-created-family',
   templateUrl: './show-created-family.component.html',
   styleUrls: ['./show-created-family.component.css']
 })
-export class ShowCreatedFamilyComponent implements OnInit, AfterViewInit{
+export class ShowCreatedFamilyComponent implements OnInit {
 
   constructor(private familyService: FamilyService) { }
-  familyEx1 = new Family();
-  familyEx2 = new Family();
   tBody;
   ngOnInit() {
-    this.familyEx1.father = new Father("Janusz", "Kowalski", "2342234", new Date());
-    this.familyEx1.children = [new Child("Maria", "Kula", "32242", new Date(), "female")];
-    this.familyEx2.father = new Father("Mariusz", "Nowak", "2342234", new Date());
-    this.familyEx2.children = [new Child("Janina", "Aaaron", "32242", new Date(), "female")];
-
+    this.familyService.getFamilyAsObservable().subscribe(
+      family => {
+        if (family) {
+          this.loadFamilyToTable(family);
+          let successAlert = document.getElementById("success");
+          successAlert.setAttribute("style", "display: block;");
+          setInterval(() => successAlert.setAttribute("style", "display:none;"), 5000);
+        } else {
+          let serverErrorAlert = document.getElementById("server-error");
+          serverErrorAlert.setAttribute("style", "display: block;");
+          setInterval(() => serverErrorAlert.setAttribute("style", "display:none;"), 5000);
+        }
+      }
+    )
   }
 
   ngAfterViewInit() {
-    let successAlert = document.getElementById("success");
-    successAlert.setAttribute("style", "display: block;");
-    setInterval(() => successAlert.setAttribute("style", "display:none;"), 5000);
-    this.familyService.getFamilyAsObservable().subscribe(family => {
-        if (family) {
-        setTimeout(() => this.loadFamilyToTable(family), 100);
-      }
-    });
   }
 
   loadFamilyToTable(family: Family):void {
@@ -55,7 +55,7 @@ export class ShowCreatedFamilyComponent implements OnInit, AfterViewInit{
     fatherAttributes[0].appendChild(document.createTextNode(family.father.firstName));
     fatherAttributes[1].appendChild(document.createTextNode(family.father.secondName));
     fatherAttributes[2].appendChild(document.createTextNode(family.father.pesel));
-    fatherAttributes[3].appendChild(document.createTextNode(family.father.birthDate.toDateString()));
+    fatherAttributes[3].appendChild(document.createTextNode(family.father.birthDate));
     family.children.forEach(child => {
       let childRow = document.createElement("tr");
       tbody.appendChild(childRow);
@@ -70,7 +70,7 @@ export class ShowCreatedFamilyComponent implements OnInit, AfterViewInit{
       childAttributes[0].appendChild(document.createTextNode(child.firstName));
       childAttributes[1].appendChild(document.createTextNode(child.secondName));
       childAttributes[2].appendChild(document.createTextNode(child.pesel));
-      childAttributes[3].appendChild(document.createTextNode(child.birthDate.toDateString()));
+      childAttributes[3].appendChild(document.createTextNode(child.birthDate));
       childAttributes[4].appendChild(document.createTextNode(child.sex));
     })
   }

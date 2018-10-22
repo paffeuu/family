@@ -2,10 +2,10 @@ export class Child {
   firstName: string;
   secondName: string;
   pesel: string;
-  birthDate: Date;
+  birthDate: any;
   sex: string;
 
-  constructor(firstName: string, secondName: string, pesel: string, birthDate: Date, sex: string) {
+  constructor(firstName: string, secondName: string, pesel: string, birthDate: any, sex: string) {
     this.firstName = firstName;
     this.secondName = secondName;
     this.pesel = pesel;
