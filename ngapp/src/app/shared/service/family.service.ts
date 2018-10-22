@@ -11,6 +11,9 @@ import {Observable, Subject} from "rxjs";
 export class FamilyService {
   family: Family;
   familySubject: Subject<Family>;
+  familiesSubject: Subject<Set<Family>>;
+
+  families: Set<Family>;
 
   familyEx1 = new Family();
   familyEx2 = new Family();
@@ -22,12 +25,21 @@ export class FamilyService {
     this.familyEx2.children = [new Child("Janina", "Aaaron", "32242", new Date(), "female")];
 
     this.familySubject = new Subject<Family>();
+    this.familiesSubject = new Subject<Set<Family>>();
     this.restService.getFamilyAsObservable().subscribe(
       family => {
         this.familySubject.next(family);
-        console.log(this);
       }
-    )
+    );
+
+    this.restService.getFamiliesAsObservable().subscribe(
+      families => {
+        {
+          this.familiesSubject.next(families);
+          this.families = families;
+        }
+      }
+    );
   }
 
   initializeFamily(): void {
@@ -54,6 +66,9 @@ export class FamilyService {
     if (firstName.length == 0 || secondName.length == 0 || pesel.length == 0 || sex.length == 0) {
       return false;
     }
+    if (pesel.length != 11) {
+      return false;
+    }
     if (sex != "male" && sex != "female") {
       return false;
     }
@@ -67,8 +82,42 @@ export class FamilyService {
     this.restService.createFamily(this.family);
   }
 
+  searchChild(firstName: string, secondName: string, pesel: string, birthDate: Date, sex: string): boolean {
+    if (firstName == null && secondName == null && pesel == null && birthDate == null && sex == null) {
+      return false;
+    }
+    if (firstName != null && firstName.length == 0) {
+      return false;
+    }
+    if (secondName != null && secondName.length == 0) {
+      return false;
+    }
+    if (pesel != null && pesel.length != 11) {
+      return false;
+    }
+    if (sex != null && sex != "male" && sex != "female") {
+      return false;
+    }
+    this.restService.searchChild(new Child(firstName, secondName, pesel, birthDate, sex));
+    return true;
+  }
+
+  getFamilyByFather(father: Father):Family {
+    let familyByFather = null;
+    this.families.forEach(family => {
+      if (family.father == father) {
+        familyByFather = family;
+      }
+    });
+    return familyByFather;
+  }
+
   getFamilyAsObservable(): Observable<Family> {
     return this.familySubject.asObservable();
+  }
+
+  getFamiliesAsObservable(): Observable<Set<Family>> {
+    return this.familiesSubject.asObservable();
   }
 
   static toUpperCase(word: string) {

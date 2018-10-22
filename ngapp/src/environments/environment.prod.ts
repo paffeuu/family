@@ -1,3 +1,8 @@
 export const environment = {
-  production: true
+  url: "/family/",
+  createFamilyEndpoint: "create-family/",
+  addFatherEndpoint: "add-father/",
+  addChildEndpoint: "add-child/",
+  readFamilyEndpoint: "read-family/",
+  searchChildEndpoint: "search-child"
 };

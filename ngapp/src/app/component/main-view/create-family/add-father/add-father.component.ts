@@ -34,7 +34,7 @@ export class AddFatherComponent implements OnInit, AfterViewInit {
     } else {
       let failedAlert = document.getElementById("failed");
       failedAlert.setAttribute("style", "display: block;");
-      setInterval(() => failedAlert.setAttribute("style", "display:none;"), 5000);
+      setTimeout(() => failedAlert.setAttribute("style", "display:none;"), 5000);
     }
   }
 

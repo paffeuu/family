@@ -1,9 +1,8 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FamilyService} from "../../../../shared/service/family.service";
 import {Family} from "../../../../shared/model/family";
 import {Father} from "../../../../shared/model/father";
 import {Child} from "../../../../shared/model/child";
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-show-created-family',
@@ -21,17 +20,14 @@ export class ShowCreatedFamilyComponent implements OnInit {
           this.loadFamilyToTable(family);
           let successAlert = document.getElementById("success");
           successAlert.setAttribute("style", "display: block;");
-          setInterval(() => successAlert.setAttribute("style", "display:none;"), 5000);
+          setTimeout(() => successAlert.setAttribute("style", "display:none;"), 5000);
         } else {
           let serverErrorAlert = document.getElementById("server-error");
           serverErrorAlert.setAttribute("style", "display: block;");
-          setInterval(() => serverErrorAlert.setAttribute("style", "display:none;"), 5000);
+          setTimeout(() => serverErrorAlert.setAttribute("style", "display:none;"), 5000);
         }
       }
     )
-  }
-
-  ngAfterViewInit() {
   }
 
   loadFamilyToTable(family: Family):void {

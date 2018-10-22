@@ -29,6 +29,21 @@ public class Child {
     @Column(name="Sex")
     private String sex;
 
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "FamilyId")
+    private Family family;
+
+    public Child() {}
+
+    public Child(String firstName, String secondName, String pesel, Date birthDate, String sex) {
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.pesel = pesel;
+        this.birthDate = birthDate;
+        this.sex = sex;
+    }
+
     public Family getFamily() {
         return family;
     }
@@ -36,11 +51,6 @@ public class Child {
     public void setFamily(Family family) {
         this.family = family;
     }
-
-    @ManyToOne
-    @JsonBackReference
-    @JoinColumn(name = "FamilyId")
-    private Family family;
 
     public int getId() {
         return id;

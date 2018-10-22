@@ -7,6 +7,7 @@ import {MenuModule} from "./component/menu/menu.module";
 import {CreateFamilyModule} from "./component/main-view/create-family/create-family.module";
 import {WelcomeComponent} from "./component/main-view/welcome/welcome.component";
 import {HttpClientModule} from "@angular/common/http";
+import {SearchFamilyModule} from "./component/main-view/search-family/search-family.module";
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {HttpClientModule} from "@angular/common/http";
     RoutingModule,
     MenuModule,
     CreateFamilyModule,
+    SearchFamilyModule,
     HttpClientModule
   ],
   providers: [],
