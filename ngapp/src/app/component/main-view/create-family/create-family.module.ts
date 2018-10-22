@@ -5,12 +5,19 @@ import { AddChildComponent } from './add-child/add-child.component';
 import {RoutingModule} from "../../../routing/routing.module";
 import { CreateFamilyComponent } from './create-family.component';
 import { ShowCreatedFamilyComponent } from './show-created-family/show-created-family.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
-    RoutingModule
+    RoutingModule,
+    FormsModule
   ],
-  declarations: [AddFatherComponent, AddChildComponent, CreateFamilyComponent, ShowCreatedFamilyComponent]
+  declarations: [
+    AddFatherComponent,
+    AddChildComponent,
+    CreateFamilyComponent,
+    ShowCreatedFamilyComponent
+  ]
 })
 export class CreateFamilyModule {}

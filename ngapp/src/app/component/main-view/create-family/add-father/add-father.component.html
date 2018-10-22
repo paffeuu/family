@@ -1,3 +1,6 @@
+<div class="alert alert-secondary" id="failed" role="alert">
+  Your input was wrong. Propably your PESEL number does not match requirements.
+</div>
 <p class="header">Add father</p>
 <div class="input-container">
   <div class="normal-text">
@@ -5,19 +8,22 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">First name</span>
       </div>
-      <input type="text" title="firstName" class="form-control" aria-label="FirstName" aria-describedby="basic-addon1">
+      <input type="text" name="firstName" [(ngModel)]="firstName" title="firstName" class="form-control"
+             aria-label="FirstName" aria-describedby="basic-addon1">
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon2">Second name</span>
       </div>
-      <input type="text" title="secondName" class="form-control" aria-label="SecondName" aria-describedby="basic-addon1">
+      <input type="text" name="secondName" [(ngModel)]="secondName" title="secondName" class="form-control"
+             aria-label="SecondName" aria-describedby="basic-addon1">
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon3">PESEL number</span>
       </div>
-      <input type="text" title="peselNr" class="form-control" aria-label="PESEL" aria-describedby="basic-addon1" id="pesel-input">
+      <input type="text" title="pesel" name="pesel" [(ngModel)]="pesel" class="form-control"
+             aria-label="PESEL" aria-describedby="basic-addon1" id="pesel-input">
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
@@ -27,5 +33,5 @@
              aria-label="DateOfBirth" aria-describedby="basic-addon1" tabindex="-1">
     </div>
   </div>
-    <button type="button" [routerLink]="'add-child'" class="btn btn-success">Add father</button>
+    <button type="button" class="btn btn-success" (click)="addFather()">Add father</button>
 </div>
